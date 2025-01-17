@@ -1,0 +1,42 @@
+package Ag5;
+
+import java.util.Scanner;
+
+public class Ex9 {
+
+    public static void nhap(int[] a, int n) {
+        Scanner nhap = new Scanner(System.in);
+        for (int i = 0; i < n; i++) {
+            System.out.print("a[" + i + "]=");
+            a[i] = nhap.nextInt();
+        }
+    }
+
+    public static void timNho2(int[] a, int n) {
+        if (n < 2) {
+            System.out.println("Mang phai co it nhat 2 phan tu");
+            return;
+        }
+
+        int smallest1 = Integer.MAX_VALUE;
+        int smallest2 = Integer.MAX_VALUE;
+        for (int i = 0; i < n; i++) {
+            if (a[i] < smallest1) {
+                smallest2 = smallest1;
+                smallest1 = a[i];
+            } else if (a[i] < smallest2 && a[i]!=smallest1) {
+                smallest2 = a[i];
+            }
+        }
+        System.out.println("So be thu 2 trong mang la :" + smallest2);
+    }
+
+    public static void main(String[] args) {
+        Scanner nhap = new Scanner(System.in);
+        System.out.print("nhap so phan tu cua mang :");
+        int n = nhap.nextInt();
+        int[] a = new int[n];
+        nhap(a, n);
+        timNho2(a, n);
+    }
+}
