@@ -1,0 +1,46 @@
+package Ag5;
+
+import java.util.Scanner;
+
+public class Ex4 {
+    public static int xoa(int[] a, int n, int vt) {
+        for (int i = vt; i < n - 1; i++) {
+            a[i] = a[i + 1];
+        }
+        return n - 1;
+    }
+    public static void nhap(int[] a, int n) {
+        Scanner nhap = new Scanner(System.in);
+        for (int i = 0; i < n; i++) {
+            System.out.print("a[" + i + "]=");
+            a[i] = nhap.nextInt();
+        }
+    }
+    public static void xuat(int[] a, int n) {
+        System.out.print("mang sau khi hoan thanh la :");
+        for (int i = 0; i < n; i++) {
+            System.out.println("a[" + i + "]=" + a[i]);
+        }
+    }
+    public static int xoaTrung(int[] a, int n) {
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (a[i] == a[j]) {
+                    n = xoa(a, n, j);
+                    j--;
+                }
+            }
+        }
+        return n;
+    }
+    public static void main(String[] args) {
+        Scanner nhap = new Scanner(System.in);
+        System.out.print("nhap so phan tu cua mang:");
+        int n = nhap.nextInt();
+        int[] a = new int[n];
+        nhap(a, n);
+        xuat(a, n);
+        n = xoaTrung(a, n);
+        xuat(a, n);
+    }
+}
